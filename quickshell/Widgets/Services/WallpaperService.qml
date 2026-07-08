@@ -17,7 +17,6 @@ Singleton {
     /// Currently active wallpaper path
     property string currentWallpaper: ""
 
-    // FIX 1: Expose a public refresh function for the UI to call
     function refresh() {
         _scan()
     }
@@ -84,9 +83,9 @@ Singleton {
     function _scan() {
         if (!wallpaperDirectory) return
         
-        // FIX 2: If a scan is already running, don't overlap commands
         if (scanProcess.running) return 
 
+        // UPDATED: Added video formats to the find command matching array
         var cmd = [
             "find", wallpaperDirectory,
             "-type", "f",
@@ -96,7 +95,12 @@ Singleton {
                  "-iname", "*.webp", "-o",
                  "-iname", "*.bmp", "-o",
                  "-iname", "*.tiff", "-o",
-                 "-iname", "*.tif", ")",
+                 "-iname", "*.tif", "-o",
+                 "-iname", "*.mp4", "-o",
+                 "-iname", "*.webm", "-o",
+                 "-iname", "*.mkv", "-o",
+                 "-iname", "*.mov", "-o",
+                 "-iname", "*.avi", ")",
             "-not", "-name", ".*",
             "-print"
         ]
@@ -182,7 +186,7 @@ Singleton {
             onStreamFinished: {
                 var files = text.trim().split("\n").filter(function(f) { return f.length > 0 })
                 if (files.length === 0) {
-                    console.warn("WallpaperService: no images found in", root.wallpaperDirectory)
+                    console.warn("WallpaperService: no images or videos found in", root.wallpaperDirectory)
                     root.wallpaperPaths = []
                     return
                 }
@@ -234,10 +238,9 @@ Singleton {
         }
     }
 
-    // FIX 3: Replaced the non-functional FileView component with a clean interval scanner
     Timer {
         id: directoryWatcherTimer
-        interval: 10000 // Automatically scans for folder changes every 10 seconds
+        interval: 10000 
         running: true
         repeat: true
         onTriggered: root._scan()

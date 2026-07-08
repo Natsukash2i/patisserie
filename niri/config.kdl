@@ -76,7 +76,7 @@ layout {
     struts {}
 }
 
-spawn-at-startup "wlsunset" "-t" "3000" "-T" "5500" "-S" "06:00" "-s" "17:00"
+spawn-at-startup "sunsetr"
 spawn-at-startup "fcitx5"
 spawn-at-startup "qs"
 spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
@@ -179,8 +179,8 @@ blur {
 
 
 cursor {
-    xcursor-theme "oreo_spark_violet_cursors"
-    xcursor-size 24
+    xcursor-theme "Qogir"
+    xcursor-size 26
     hide-when-typing
 }
 
@@ -279,7 +279,7 @@ binds {
 
     Mod+RETURN hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty" "+new-window"; }
 
-    Mod+E hotkey-overlay-title="Open File Explorer" { spawn "ghostty" "-e" "yazi"; }
+    Mod+E hotkey-overlay-title="Open File Explorer" { spawn "nautilus"; }
     Mod+B hotkey-overlay-title="Open browser" { spawn-sh "flatpak run com.vivaldi.Vivaldi"; }
 
     Mod+Backslash hotkey-overlay-title="Choose a wallpaper" { spawn "qs" "ipc" "call" "wallpaper" "showPicker"; }

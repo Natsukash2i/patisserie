@@ -103,4 +103,4 @@ vim.opt.clipboard:append("unnamedplus")
 vim.opt.signcolumn = "yes" 
 vim.opt.termguicolors = true
 vim.opt.isfname:append("@-@")
-
+vim.opt.completeopt = {'menu', 'menuone', 'noselect', 'noinsert'}

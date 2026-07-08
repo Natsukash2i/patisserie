@@ -67,7 +67,7 @@ Rectangle {
             font {
                 family: "Geist"
                 pointSize: 10
-                bold: true
+                weight: Font.Medium
             }
             
             Layout.alignment: Qt.AlignBaseline

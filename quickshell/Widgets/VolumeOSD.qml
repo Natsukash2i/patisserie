@@ -105,9 +105,11 @@ Scope {
                         }
                     }
                         
-                    IconImage {
-                        implicitSize: 15
-                        source: Quickshell.iconPath(root.muted ? "audio-volume-muted-symbolic" : (root.volume < 0.3 ? "audio-volume-low-symbolic" :  "audio-volume-high-symbolic"))
+                    Text {
+                        text: root.muted ? "" : (root.volume < 0.3 ? "" : "")
+                        font.family: "JetBrainsMono Nerd Font" 
+                        font.pointSize: 14
+                        color: "#D1D2E8" 
                         Layout.alignment: Qt.AlignHCenter
                     }
 

@@ -1,0 +1,27 @@
+#[Backend]
+backend = "wayland"
+transition_mode = "geo"
+
+#[Smoothing]
+smoothing = true
+startup_duration = 2.0
+shutdown_duration = 2.0
+adaptive_interval = 1
+
+#[Time-based config]
+night_temp = 3200
+day_temp = 6000
+night_gamma = 85
+day_gamma = 100
+update_interval = "auto"
+
+#[Static config]
+static_temp = 6000
+static_gamma = 100
+
+#[Manual transitions]
+transition_duration = 60 
+
+#[Geolocation]
+latitude = 12.2500
+longitude = 109.1833
